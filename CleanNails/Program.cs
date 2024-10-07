@@ -4,6 +4,7 @@
     {
         static void Main(string[] args)
         {
+            // Test of nails.
             List<Nail> nails = NailHelper.GetFingerNails();
 
             foreach (Nail nail in nails)
@@ -14,6 +15,8 @@
                     $" Finger: {nail.RightOrLeft} {nail.TypeOfFingerOrToe}" +
                     $" Color: {nail.Color}");
             }
+
+            // End test.
 
         }
     }
