@@ -67,7 +67,7 @@ namespace CleanNails.HelperClasses
 
         public static Hair NewHair()
         {
-            float growRate = 1 / 30;
+            float growRate = 0.4f;
             return new Hair(5.0f, growRate);
         }
 

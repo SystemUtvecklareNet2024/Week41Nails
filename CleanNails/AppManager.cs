@@ -198,9 +198,8 @@ namespace CleanNails
                     {
                         nail.Grow();
                     }
-                    //customer.Hair.Grow();
+                    customer.Hair.Grow();
                 }
-
                 nailSaloon.CheckAndClipNails();
                 nailSaloon.CheckAndClipHair();
             }

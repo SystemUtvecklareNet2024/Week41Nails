@@ -12,7 +12,7 @@ namespace CleanNails
         {
             int counter = 0;
 
-            foreach (Nail nail in person.FingerNails)
+            foreach (Nail nail in person.GetLongFingerNails())
             {
                 //Console.WriteLine($"{person.Name}'s {nail.Color} nail on {nail.RightOrLeft} {nail.TypeOfFingerOrToe} is {nail.CurrentLength:F1} mm long");
 
