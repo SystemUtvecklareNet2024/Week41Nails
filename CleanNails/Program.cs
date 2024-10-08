@@ -10,6 +10,8 @@
 
             manager.Menu();
 
+            Console.WriteLine("test");
+
         }
     }
 }
