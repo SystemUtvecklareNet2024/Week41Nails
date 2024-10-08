@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace CleanNails
 {
-    internal interface IClipHandler
-    {
-        bool ShouldClip();
-        void Clip();
+    internal interface IClipType
+    {        
+        bool ShouldClip(Person person);
+        void Clip(Person person);
     }
 }

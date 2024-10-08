@@ -10,16 +10,24 @@ namespace CleanNails
     internal class Person
     {
         public string Name { get; set; }
+        public int Id { get; set; }
         public float PreferredNailLength { get; set; }
+        public float PrefferedHairLength { get; set; }
+        public Hair Hair { get; set; }
         public List<Nail> FingerNails { get; }
         public List<Nail> ToeNails { get; }
 
-        public Person(string name, float preferredNailLength)
+
+
+        public Person(string name, float preferredNailLength, int id)
         {
+            this.Hair = AllGodHelper.NewHair();
             this.Name = name;
             this.PreferredNailLength = preferredNailLength;
-            this.FingerNails = NailHelper.GetFingerNails();
-            this.ToeNails = NailHelper.GetToeNails();
+            this.FingerNails = AllGodHelper.GetFingerNails();
+            this.ToeNails = AllGodHelper.GetToeNails();
+            this.Id = id;
+            this.PrefferedHairLength = 4.0f;
         }
 
         public bool IsNailsToLong()
@@ -50,5 +58,9 @@ namespace CleanNails
             return nails;
         }
 
+        public override string ToString()
+        {
+            return $"ID: {Id} Name: {Name} HairLength: {Hair.HairLength} cm";
+        }
     }
 }

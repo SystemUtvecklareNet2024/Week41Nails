@@ -8,6 +8,7 @@ namespace CleanNails
 {
     internal class Nail
     {
+        public int Indexer { get; set; }
         public float CurrentLength { get; set; }
         public string Color { get; set; }
 
@@ -20,8 +21,9 @@ namespace CleanNails
         private RightOrLeft _rightOrLeft;
         public RightOrLeft RightOrLeft { get { return _rightOrLeft; } }
 
-        public Nail(string color, TypeOfFingerOrToe fingerOrToe, RightOrLeft rightOrLeft, float currentLength, float dailyGrowRate)
+        public Nail(int indexer, string color, TypeOfFingerOrToe fingerOrToe, RightOrLeft rightOrLeft, float currentLength, float dailyGrowRate)
         {
+            Indexer = indexer;
             Color = color;
             CurrentLength = currentLength;
             _dailyGrowRate = dailyGrowRate;
@@ -38,7 +40,7 @@ namespace CleanNails
         {
             return $"CurrentLength: {CurrentLength:F1}" +
                     $" GrowRate: {DailyGrowRate}" +
-                    $" Finger: {RightOrLeft} {TypeOfFingerOrToe}" +
+                    $" : {RightOrLeft} {TypeOfFingerOrToe}" +
                     $" Color: {Color}";
         }
     }
