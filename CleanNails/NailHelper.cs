@@ -8,7 +8,6 @@ namespace CleanNails
 {
     internal static class NailHelper
     {
-        
         public static List<Nail> GetFingerNails()
         {
             Random randLength = new Random();
@@ -17,18 +16,18 @@ namespace CleanNails
             List<Nail> nails = new List<Nail>
             {
                 // Right Hand
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.Thumb, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.IndexFinger, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.MiddleFinger, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.RingFinger, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.LittleFinger, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.Thumb, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.IndexFinger, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.MiddleFinger, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.RingFinger, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.LittleFinger, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
 
                  // Left Hand
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.Thumb, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.IndexFinger, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.MiddleFinger, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.RingFinger, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.LittleFinger, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.Thumb, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.IndexFinger, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.MiddleFinger, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.RingFinger, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.LittleFinger, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
             };
 
             return nails;
@@ -70,6 +69,6 @@ namespace CleanNails
 
             return nailColor[rand.Next(0, nailColor.Count())];
         }
-        
+
     }
 }

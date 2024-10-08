@@ -6,11 +6,9 @@ using System.Threading.Tasks;
 
 namespace CleanNails
 {
-    internal class NailClipper
+    internal interface INailHandler
     {
-        public void ClipNail(Nail nail)
-        {
-            nail.CurrentLength = nail.PreferredLength;
-        }
+        bool ShouldClip();
+        void ClipNails();
     }
 }

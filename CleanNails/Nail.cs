@@ -14,8 +14,6 @@ namespace CleanNails
         private float _dailyGrowRate;
         public float DailyGrowRate { get { return _dailyGrowRate; } }
 
-        public float PreferredLength { get; set; }
-
         private TypeOfFingerOrToe _typeOfFingerOrToe;
         public TypeOfFingerOrToe TypeOfFingerOrToe { get { return _typeOfFingerOrToe; } }
 
@@ -24,11 +22,10 @@ namespace CleanNails
 
 
 
-        public Nail(string color, TypeOfFingerOrToe fingerOrToe, RightOrLeft rightOrLeft, float currentLength, float preferredLength, float dailyGrowRate)
+        public Nail(string color, TypeOfFingerOrToe fingerOrToe, RightOrLeft rightOrLeft, float currentLength, float dailyGrowRate)
         {
             Color = color;
             CurrentLength = currentLength;
-            PreferredLength = preferredLength;
             _dailyGrowRate = dailyGrowRate;
             _typeOfFingerOrToe = fingerOrToe;
             _rightOrLeft = rightOrLeft;
@@ -38,6 +35,5 @@ namespace CleanNails
         {
             CurrentLength += DailyGrowRate;
         }
-
     }
 }

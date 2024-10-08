@@ -8,15 +8,22 @@ namespace CleanNails
 {
     internal class NailSaloon
     {
-        private NailClipper clipper;
+        public string SaloonName { get; set; }
         public List<Person> customers { get; set; }
 
-        public NailSaloon()
+        public NailSaloon(string saloonName)
         {
-            customers = new List<Person>();
-            clipper = new NailClipper();
+            this.SaloonName = saloonName;
+            this.customers = new List<Person>();
         }
 
-        
+        public void CheckAndClipNails()
+        {
+            foreach (Person person in customers)
+            {
+
+            }
+        }
+
     }
 }
