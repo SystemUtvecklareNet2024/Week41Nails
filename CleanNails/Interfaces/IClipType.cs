@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanNails
+namespace CleanNails.Interfaces
 {
     internal interface IClipType
-    {        
+    {
         bool ShouldClip(Person person);
         void Clip(Person person);
     }

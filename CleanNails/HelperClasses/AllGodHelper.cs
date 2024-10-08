@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanNails.Enum;
 
 namespace CleanNails.HelperClasses
 {
@@ -11,6 +12,8 @@ namespace CleanNails.HelperClasses
         public static List<Nail> GetFingerNails()
         {
             Random randLength = new Random();
+            Random randGrow = new();
+
             float dailyGrowRate = 0.1f;
 
             List<Nail> nails = new List<Nail>

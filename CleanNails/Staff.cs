@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanNails.Interfaces;
 
 namespace CleanNails
 {
@@ -24,7 +25,7 @@ namespace CleanNails
 
         public bool ShouldClip(Person person)
         {
-            return person.IsNailsToLong(); 
+            return typeOfClipper.ShouldClip(person);
         }
     }
 }

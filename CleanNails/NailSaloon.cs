@@ -78,14 +78,7 @@ namespace CleanNails
 
         public Person GetValidCustomerById(int id)
         {
-            foreach (Person person in customers)
-            {
-                if(person.Id == id)
-                {
-                    return person;
-                }
-            }
-            return null;
+            return customers.Where(p => p.Id == id).First();
         }
 
         private int GenerateValidId()

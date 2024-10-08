@@ -26,13 +26,11 @@ namespace CleanNails
             Console.WriteLine("2. Delete customer");
             Console.WriteLine("3. List all customers");
             Console.WriteLine("4. Change preferred length of nails");
-            //Console.WriteLine("5. Change color of nails");
             Console.WriteLine("6. Simulate days");
             Console.WriteLine("7. Quit");
 
             Console.Write("\nEnter choice: ");
             ChoiceHandler(Console.ReadLine());
-
         }
 
         public void ChoiceHandler(string? input)
@@ -61,16 +59,11 @@ namespace CleanNails
                     // Change preferred length
                     ChangePreferredLength();
                     break;
-
                 case "5":
-                    // Change color of Nails
-                    break;
-
-                case "6":
                     //Simulate Days
                     SimulateDays(20);
                     break;
-                case "7":
+                case "6":
                     //Quit
                     break;
 
