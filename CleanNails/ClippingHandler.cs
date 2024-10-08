@@ -8,22 +8,20 @@ namespace CleanNails
 {
     internal class ClippingHandler
     {
-        INailHandler nailHandler;
+        private IClipHandler nailHandler;
 
-        public ClippingHandler(INailHandler handler)
+        public ClippingHandler(IClipHandler handler)
         {
             this.nailHandler = handler;
         }
 
         public void ClipNails()
         {
-            nailHandler.ClipNails();
-            
+            nailHandler.Clip();            
         }
 
         public bool ShouldClip()
         {
-            // person.IsNailToLong();
             return nailHandler.ShouldClip(); 
         }
     }

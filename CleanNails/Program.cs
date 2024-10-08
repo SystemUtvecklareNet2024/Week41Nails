@@ -3,20 +3,12 @@
     internal class Program
     {
         static void Main(string[] args)
-        {
-            // Test of nails.
-            List<Nail> nails = NailHelper.GetFingerNails();
+        {            
+            NailSaloon nailAndBeauty = new NailSaloon("Nail And Beauty");
 
-            foreach (Nail nail in nails)
-            {
-                Console.WriteLine($"CurrentLength: {nail.CurrentLength:F1}" +
-                    $" GrowRate: {nail.DailyGrowRate}" +
-                    $" PrefferedLength: {nail.PreferredLength:F1}" +
-                    $" Finger: {nail.RightOrLeft} {nail.TypeOfFingerOrToe}" +
-                    $" Color: {nail.Color}");
-            }
+            AppManager manager = new AppManager(nailAndBeauty);
 
-            // End test.
+            manager.Menu();
 
         }
     }

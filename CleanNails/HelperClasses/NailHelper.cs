@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace CleanNails
+namespace CleanNails.HelperClasses
 {
     internal static class NailHelper
     {
@@ -41,18 +41,18 @@ namespace CleanNails
             List<Nail> nails = new List<Nail>
             {
                 // Right Foot
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.BigToe, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate ),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.IndexToe, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.MiddleToe, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.FourthToe, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.PinkyToe, RightOrLeft.Right, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.BigToe, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate ),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.IndexToe, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.MiddleToe, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.FourthToe, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.PinkyToe, RightOrLeft.Right, randLength.NextSingle(), dailyGrowRate),
 
                  // Left Foot
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.BigToe, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.IndexToe, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.MiddleToe, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.FourthToe, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
-                 new Nail(GetNailColor(), TypeOfFingerOrToe.PinkyToe, RightOrLeft.Left, randLength.NextSingle(), randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.BigToe, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.IndexToe, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.MiddleToe, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.FourthToe, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
+                 new Nail(GetNailColor(), TypeOfFingerOrToe.PinkyToe, RightOrLeft.Left, randLength.NextSingle(), dailyGrowRate),
             };
 
             return nails;

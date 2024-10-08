@@ -20,8 +20,6 @@ namespace CleanNails
         private RightOrLeft _rightOrLeft;
         public RightOrLeft RightOrLeft { get { return _rightOrLeft; } }
 
-
-
         public Nail(string color, TypeOfFingerOrToe fingerOrToe, RightOrLeft rightOrLeft, float currentLength, float dailyGrowRate)
         {
             Color = color;
@@ -34,6 +32,14 @@ namespace CleanNails
         public void Grow()
         {
             CurrentLength += DailyGrowRate;
+        }
+
+        public override string ToString()
+        {
+            return $"CurrentLength: {CurrentLength:F1}" +
+                    $" GrowRate: {DailyGrowRate}" +
+                    $" Finger: {RightOrLeft} {TypeOfFingerOrToe}" +
+                    $" Color: {Color}";
         }
     }
 }

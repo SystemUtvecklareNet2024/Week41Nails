@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using CleanNails.HelperClasses;
 
 namespace CleanNails
 {
@@ -17,18 +18,31 @@ namespace CleanNails
 
         public void Menu()
         {
-
+            SimulateDays(20);
+            nailSaloon.CheckAndClipNails();
         }
 
-        public void ClipNails()
+        private void SimulateDays(int days)
         {
-            throw new NotImplementedException();
-        }
+            for (int i = 1; i <= days; i++)
+            {
+                Console.WriteLine("Day" + i);
 
-        public bool ShouldClip()
-        {
-            // Check if should clip
-            throw new NotImplementedException();
+                foreach (var customer in nailSaloon.GetAllCustomers())
+                {
+                    foreach (var nail in customer.ToeNails)
+                    {
+                        nail.Grow();                        
+                    }                   
+
+                    foreach (var nail in customer.FingerNails)
+                    {
+                        nail.Grow();                        
+                    }                    
+                }
+                nailSaloon.CheckAndClipNails();
+            }
         }
     }
 }
+
