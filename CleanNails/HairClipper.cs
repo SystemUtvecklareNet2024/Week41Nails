@@ -22,7 +22,7 @@ namespace CleanNails
 
         public bool ShouldClip(Person person)
         {
-            if (person.Hair.HairLength >= person.PrefferedHairLength + 10.0f)
+            if (person.Hair.HairLength >= person.PrefferedHairLength + 5.0f)
             {
                 return true;
             }

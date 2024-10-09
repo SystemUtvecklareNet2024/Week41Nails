@@ -16,7 +16,7 @@ namespace CleanNails
 
             foreach (Nail nail in person.GetLongToeNails())
             {
-                Console.ForegroundColor = ConsoleColor.Blue;
+                Console.ForegroundColor = ConsoleColor.Green;
                 Console.Write(staffName);
                 Console.ForegroundColor = ConsoleColor.White;
                 Console.Write($" just clipped {person.Name}'s ");

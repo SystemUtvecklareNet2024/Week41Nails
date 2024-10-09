@@ -96,7 +96,6 @@ namespace CleanNails
 
         public override string ToString()
         {
-            //return $"ID: {Id}\tName: {Name.PadRight(15)} HairLength: {Hair.HairLength:F1} cm\t AverageNailLength: {GetAverageNailLength():F1} mm";
             return $"{Id.ToString().PadRight(11)} {Name.PadRight(19)} {Hair.HairLength:F1} cm\t\t {GetAverageNailLength():F1} mm";
         }
     }

@@ -77,12 +77,12 @@ namespace CleanNails
 
             if (name != null)
             {
-                Console.Write("Preferred naillength: ");
+                Console.Write("Preferred naillength in mm: ");
 
                 float nailLength;
                 if (float.TryParse(Console.ReadLine(), out nailLength))
                 {
-                    Console.Write("Preferred hairlength: ");
+                    Console.Write("Preferred hairlength in cm: ");
 
                     float hairLength;
                     if(float.TryParse(Console.ReadLine(), out hairLength))
@@ -138,11 +138,19 @@ namespace CleanNails
             foreach (var person in nailSaloon.GetAllCustomers())
             {
                 Console.WriteLine(person);
-
-                /*foreach (var nail in person.FingerNails)
+                
+                Console.WriteLine("---- FingerNails ----");
+                foreach (var nail in person.FingerNails)
                 {
-                    Console.WriteLine($"CurrLength: {nail.CurrentLength} PreffLength: {person.PreferredNailLength} growrate: {nail.DailyGrowRate}");
-                }*/
+                    Console.WriteLine($"{nail.RightOrLeft} {nail.TypeOfFingerOrToe.ToString().PadRight(12)}\tCurrLength: {nail.CurrentLength:F1}\t PreffLength: {person.PreferredNailLength:F1}\t Growrate: {nail.DailyGrowRate:F1}");
+                }
+                Console.WriteLine("---- ToeNails ----");
+                foreach (var nail in person.ToeNails)
+                {
+                    Console.WriteLine($"{nail.RightOrLeft} {nail.TypeOfFingerOrToe.ToString().PadRight(12)}\tCurrLength: {nail.CurrentLength:F1}\t PreffLength: {person.PreferredNailLength:F1}\t Growrate: {nail.DailyGrowRate:F1}");
+                }
+                Console.WriteLine();
+                
             }
         }
 

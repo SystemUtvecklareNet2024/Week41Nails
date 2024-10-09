@@ -14,7 +14,6 @@ namespace CleanNails.HelperClasses
             Random randLength = new Random();
             Random dailyGrowRate = new();
 
-
             List<Nail> nails = new List<Nail>
             {
                 // Right Hand
@@ -62,9 +61,8 @@ namespace CleanNails.HelperClasses
 
         public static Hair NewHair()
         {
-            Random randGrow = new Random();
-            float growRate = 0.4f;
-            return new Hair(5.0f, randGrow.NextSingle());
+            Random rand = new Random();
+            return new Hair((float)rand.Next(0, 10), rand.NextSingle());
         }
 
         private static string GetNailColor()
