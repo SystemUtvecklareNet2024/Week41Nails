@@ -9,8 +9,14 @@ namespace CleanNails
 {
     internal class HairClipper : IClipType
     {
-        public void Clip(Person person)
+        public void Clip(Person person, string staffName)
         {
+            
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write(staffName);
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.WriteLine($" just clipped {person.Name}'s hair to a length of {person.PrefferedHairLength:F1} cm. Old length was {person.Hair.HairLength:F1} cm.");
+
             person.Hair.HairLength = person.PrefferedHairLength;
         }
 

@@ -11,52 +11,67 @@ namespace CleanNails
     {
         public string SaloonName { get; set; }
 
-        private List<Person> customers;
+        private List<Person> _customers;
 
         private Staff pablo;
         private Staff pablina;
+        private Staff miguel;
 
         public NailSaloon(string saloonName)
         {
             this.SaloonName = saloonName;
-            this.customers = new List<Person>();
+            this._customers = new List<Person>();
 
-            pablo = new Staff(new NailClipper(), "Sir Pablo");
+            pablo = new Staff(new FingerNailClipper(), "Sir Pablo");
             pablina = new Staff(new HairClipper(), "Miss Pablina");
+            miguel = new Staff(new ToeNailClipper(), "Sir Miguel");
         }
 
-        public void CheckAndClipNails()
+        #region CheckAndClip
+        public void CheckAndClipFingerNails()
         {
-            foreach (Person person in customers)
+            foreach (Person person in _customers)
             {
                 if (pablo.ShouldClip(person))
                 {
-                    pablo.Clip(person);
+                    pablo.Clip(person);                    
                 }
             }            
         }
 
+        public void CheckAndClipToeNails()
+        {
+            foreach (var person in _customers)
+            {
+                if(miguel.ShouldClip(person))
+                {
+                    miguel.Clip(person);                    
+                }
+            }
+        }
+
         public void CheckAndClipHair()
         {
-            foreach (Person person in customers)
+            foreach (Person person in _customers)
             {
                 if (pablina.ShouldClip(person))
                 {
                     pablina.Clip(person);
-                    Console.WriteLine($"{pablina.Name} just clipped {person.Name}'s hair to a length of {person.PrefferedHairLength} cm");
+                    
                 }
             }
         }
+        #endregion
 
         public void ChangeColorOfNails(int id)
         {
             Person customer = GetValidCustomerById(id);            
         }
 
-        public void CreateCustomer(string name, float preferredNailLength)
+        public void CreateCustomer(string name, float preferredNailLength, float preferredHairLength)
         {
-            Person customer = new Person(name, preferredNailLength, GenerateValidId());
-            customers.Add(customer);
+            Person customer = new Person(name, preferredNailLength, preferredHairLength, GenerateValidId());
+            _customers.Add(customer);
         }
 
         public bool DeleteCustomer(int id)
@@ -65,7 +80,7 @@ namespace CleanNails
 
             if (person != null)
             {
-                customers.Remove(person);
+                _customers.Remove(person);
                 return true;
             }
             return false;
@@ -73,18 +88,18 @@ namespace CleanNails
 
         public List<Person> GetAllCustomers()
         {
-            return customers;
+            return _customers;
         }
 
         public Person GetValidCustomerById(int id)
         {
-            return customers.Where(p => p.Id == id).First();
+            return _customers.Where(p => p.Id == id).First();
         }
 
         private int GenerateValidId()
         {
             int id = 0;
-            foreach(Person person in customers)
+            foreach(Person person in _customers)
             {
                 if (id <= person.Id)
                 {

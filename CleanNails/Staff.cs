@@ -8,24 +8,24 @@ using CleanNails.Interfaces;
 namespace CleanNails
 {
     internal class Staff
-    {
+    {        
+        private IClipType _typeOfClipper;
         public string Name { get; set; }
-        private IClipType typeOfClipper;
 
         public Staff(IClipType handler, string name)
         {
-            this.typeOfClipper = handler;
+            this._typeOfClipper = handler;
             Name = name;
         }
 
         public void Clip(Person person)
         {
-            typeOfClipper.Clip(person);            
+            _typeOfClipper.Clip(person, Name);            
         }
 
         public bool ShouldClip(Person person)
         {
-            return typeOfClipper.ShouldClip(person);
+            return _typeOfClipper.ShouldClip(person);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Principal;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -26,8 +27,8 @@ namespace CleanNails
             Console.WriteLine("2. Delete customer");
             Console.WriteLine("3. List all customers");
             Console.WriteLine("4. Change preferred length of nails");
-            Console.WriteLine("6. Simulate days");
-            Console.WriteLine("7. Quit");
+            Console.WriteLine("5. Simulate days");
+            Console.WriteLine("6. Quit");
 
             Console.Write("\nEnter choice: ");
             ChoiceHandler(Console.ReadLine());
@@ -38,17 +39,14 @@ namespace CleanNails
             switch (input)
             {
                 case "1":
-                    // Create new Customer
                     Create();
                     break;
 
                 case "2":
-                    // Delete customer
                     Delete();
                     break;
 
                 case "3":
-                    // List all customers
                     ListAllCustomers();
                     Console.WriteLine("\nPress enter to continue...");
                     Console.ReadLine();
@@ -56,12 +54,10 @@ namespace CleanNails
                     break;
 
                 case "4":
-                    // Change preferred length
                     ChangePreferredLength();
                     break;
                 case "5":
-                    //Simulate Days
-                    SimulateDays(20);
+                    SimulateDays();
                     break;
                 case "6":
                     //Quit
@@ -86,8 +82,19 @@ namespace CleanNails
                 float nailLength;
                 if (float.TryParse(Console.ReadLine(), out nailLength))
                 {
-                    nailSaloon.CreateCustomer(name, nailLength);
-                    Console.WriteLine("\nCreate success, press enter to continue");
+                    Console.Write("Preferred hairlength: ");
+
+                    float hairLength;
+                    if(float.TryParse(Console.ReadLine(), out hairLength))
+                    {
+                        
+                        nailSaloon.CreateCustomer(name, nailLength, hairLength);
+                        Console.WriteLine("\nCreate success, press enter to continue");
+                    }
+                    else
+                    {
+                        Console.WriteLine("\nInvalid number, press enter to continue.. ");
+                    }
                 }
                 else
                 {
@@ -127,14 +134,15 @@ namespace CleanNails
         private void ListAllCustomers()
         {
             Console.Clear();
-
+            Console.WriteLine("{0,-12}{1, -20}{2, -17}{3, -12}", "ID", "Name", "HairLength", "Average Naillength");
             foreach (var person in nailSaloon.GetAllCustomers())
             {
                 Console.WriteLine(person);
-                foreach (var nail in person.FingerNails)
+
+                /*foreach (var nail in person.FingerNails)
                 {
-                    Console.WriteLine(nail);
-                }
+                    Console.WriteLine($"CurrLength: {nail.CurrentLength} PreffLength: {person.PreferredNailLength} growrate: {nail.DailyGrowRate}");
+                }*/
             }
         }
 
@@ -151,7 +159,7 @@ namespace CleanNails
             {
                 Person person = nailSaloon.GetValidCustomerById(input);
 
-                Console.Write("New preferred Length: ");
+                Console.Write("New preferred nail Length: ");
 
                 float nailLength;
                 if (float.TryParse(Console.ReadLine(), out nailLength))
@@ -172,30 +180,41 @@ namespace CleanNails
             Menu();
         }
 
-        private void SimulateDays(int days)
+        private void SimulateDays()
         {
-            Console.WriteLine();
-            for (int i = 1; i <= days; i++)
+            Console.Clear();
+
+            Console.Write("\nDays to Simulate: ");
+
+            int numDays;
+            if (int.TryParse(Console.ReadLine(), out numDays))
             {
-                Console.WriteLine("Day " + i);
-
-                foreach (var customer in nailSaloon.GetAllCustomers())
+                for (int i = 1; i <= numDays; i++)
                 {
+                    Console.ForegroundColor = ConsoleColor.Yellow;
+                    Console.WriteLine("\nDay " + i);
+                    Console.ForegroundColor = ConsoleColor.White;
 
-                    foreach (var nail in customer.ToeNails)
+                    foreach (var customer in nailSaloon.GetAllCustomers())
                     {
-                        nail.Grow();
-                    }
 
-                    foreach (var nail in customer.FingerNails)
-                    {
-                        nail.Grow();
+                        foreach (var nail in customer.ToeNails)
+                        {
+                            nail.Grow();
+                        }
+
+                        foreach (var nail in customer.FingerNails)
+                        {
+                            nail.Grow();
+                        }
+                        customer.Hair.Grow();
                     }
-                    customer.Hair.Grow();
+                    nailSaloon.CheckAndClipFingerNails();
+                    nailSaloon.CheckAndClipToeNails();
+                    nailSaloon.CheckAndClipHair();
                 }
-                nailSaloon.CheckAndClipNails();
-                nailSaloon.CheckAndClipHair();
             }
+            Console.WriteLine("\nPress enter to return to menu");
             Console.ReadLine();
             Menu();
         }
