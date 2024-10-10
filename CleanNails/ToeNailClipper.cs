@@ -12,21 +12,13 @@ namespace CleanNails
     {
         public void Clip(Person person, string staffName)
         {
-            int counter = 0;
 
             foreach (Nail nail in person.GetLongToeNails())
             {
-                Console.ForegroundColor = ConsoleColor.Green;
-                Console.Write(staffName);
-                Console.ForegroundColor = ConsoleColor.White;
-                Console.Write($" just clipped {person.Name}'s ");
-                AllHelper.TransformToCorrectTextColor(nail.Color);
-                Console.Write($" {nail.RightOrLeft} {nail.TypeOfFingerOrToe} nail. Old length: {nail.CurrentLength:F1} mm.\n");
+                Printer.PrintClippedToeNail(person, staffName, nail);
                 nail.CurrentLength = person.PreferredNailLength;
-
-                counter++;
             }
-        }
+        }        
 
         public bool ShouldClip(Person person)
         {

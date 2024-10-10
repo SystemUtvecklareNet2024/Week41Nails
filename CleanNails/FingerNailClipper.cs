@@ -14,16 +14,10 @@ namespace CleanNails
         {
             foreach (Nail nail in person.GetLongFingerNails())
             {
-                Console.ForegroundColor = ConsoleColor.Cyan;
-                Console.Write(staffName);
-                Console.ForegroundColor= ConsoleColor.White;
-                Console.Write($" just clipped {person.Name}'s ");
-                AllHelper.TransformToCorrectTextColor(nail.Color);
-                Console.Write($" {nail.RightOrLeft} {nail.TypeOfFingerOrToe} nail. Old length: {nail.CurrentLength:F1} mm.\n");
-
-                nail.CurrentLength = person.PreferredNailLength;                
+                Printer.PrintClippedFingerNail(person, staffName, nail);
+                nail.CurrentLength = person.PreferredNailLength;
             }
-        }
+        }        
 
         public bool ShouldClip(Person person)
         {

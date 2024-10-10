@@ -63,11 +63,7 @@ namespace CleanNails
         }
         #endregion
 
-        public void ChangeColorOfNails(int id)
-        {
-            Person customer = GetValidCustomerById(id);            
-        }
-
+        #region CreateAndDelete
         public void CreateCustomer(string name, float preferredNailLength, float preferredHairLength)
         {
             Person customer = new Person(name, preferredNailLength, preferredHairLength, GenerateValidId());
@@ -86,13 +82,16 @@ namespace CleanNails
             return false;
         }
 
+        #endregion
+
+        #region Helpers
         public List<Person> GetAllCustomers()
         {
             return _customers;
         }
 
         public Person GetValidCustomerById(int id)
-        {
+        {            
             return _customers.Where(p => p.Id == id).First();
         }
 
@@ -108,6 +107,7 @@ namespace CleanNails
             }
             return id + 1;
         }
+        #endregion
 
     }
 }

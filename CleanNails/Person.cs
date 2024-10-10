@@ -30,30 +30,16 @@ namespace CleanNails
 
         public bool IsFingerNailsToLong()
         {
-            var fNails = FingerNails.Where(n => n.CurrentLength >= PreferredNailLength + 2.0f);            
-            
-            if (fNails.Count() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            var fNails = FingerNails.Where(n => n.CurrentLength >= PreferredNailLength + 2.0f);
+
+            return fNails.Count() > 0;
         }
 
         public bool IsToeNailsToLong()
         {
             var tNails = ToeNails.Where(n => n.CurrentLength >= PreferredNailLength + 2.0f);
 
-            if(tNails.Count() > 0)
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
+            return tNails.Count() > 0;
         }
 
         public List<Nail> GetLongFingerNails()

@@ -11,7 +11,7 @@ namespace CleanNails
 
             AppManager manager = new AppManager(nailAndBeauty);
 
-            manager.Menu();
+            manager.Run();
         }
     }
 }
