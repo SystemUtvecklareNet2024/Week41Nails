@@ -12,8 +12,6 @@ namespace CleanNails
     {
         public void Clip(Person person, string staffName)
         {
-            int counter = 0;
-
             foreach (Nail nail in person.GetLongFingerNails())
             {
                 Console.ForegroundColor = ConsoleColor.Cyan;
@@ -24,8 +22,6 @@ namespace CleanNails
                 Console.Write($" {nail.RightOrLeft} {nail.TypeOfFingerOrToe} nail. Old length: {nail.CurrentLength:F1} mm.\n");
 
                 nail.CurrentLength = person.PreferredNailLength;                
-
-                counter++;
             }
         }
 
