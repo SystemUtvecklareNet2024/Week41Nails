@@ -217,6 +217,7 @@ namespace CleanNails
                         }
                         customer.Hair.Grow();
                     }
+
                     nailSaloon.CheckAndClipFingerNails();
                     nailSaloon.CheckAndClipToeNails();
                     nailSaloon.CheckAndClipHair();

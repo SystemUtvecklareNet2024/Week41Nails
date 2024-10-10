@@ -10,8 +10,7 @@ namespace CleanNails
     internal class HairClipper : IClipType
     {
         public void Clip(Person person, string staffName)
-        {
-            
+        {            
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.Write(staffName);
             Console.ForegroundColor = ConsoleColor.White;
