@@ -96,16 +96,8 @@ namespace CleanNails
         }
 
         private int GenerateValidId()
-        {
-            int id = 0;
-            foreach(Person person in _customers)
-            {
-                if (id <= person.Id)
-                {
-                    id = person.Id;
-                }
-            }
-            return id + 1;
+        { 
+            return _customers.Any() ? _customers.Max(i => i.Id) + 1 : 1;
         }
         #endregion
 
