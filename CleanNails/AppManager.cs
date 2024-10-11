@@ -60,7 +60,7 @@ namespace CleanNails
             Console.Write("Preferred hairlength in cm: ");
             float hairLength = ReadFloatInput();
 
-            if(name!= null && nailLength != 0 && hairLength != 0)
+            if (name != null && nailLength != 0 && hairLength != 0)
                 nailSaloon.CreateCustomer(name, nailLength, hairLength);
 
             Console.WriteLine("\nCreate success, press enter to continue");
@@ -75,9 +75,8 @@ namespace CleanNails
             ListAllCustomers();
 
             Console.Write("\nEnter ID to delete: ");
-            int input = ReadInput();
 
-            if (nailSaloon.DeleteCustomer(input))
+            if (nailSaloon.DeleteCustomer(ReadIntInput()))
             {
                 Console.WriteLine("\nSuccessfully removed customer, press enter to continue");
             }
@@ -85,7 +84,6 @@ namespace CleanNails
             {
                 Console.WriteLine("\nCustomer not found, press enter to continue");
             }
-
             Console.ReadLine();
             Run();
         }
@@ -121,7 +119,7 @@ namespace CleanNails
 
             Console.Write("\nEnter ID of customer: ");
 
-            int input = ReadInput();
+            int input = ReadIntInput();
 
             if (nailSaloon.GetValidCustomerById(input) != null)
             {
@@ -129,16 +127,8 @@ namespace CleanNails
 
                 Console.Write("New preferred nail Length: ");
 
-                float nailLength;
-                if (float.TryParse(Console.ReadLine(), out nailLength))
-                {
-                    person.PreferredNailLength = nailLength;
-                    Console.WriteLine("\nNew length set...");
-                }
-                else
-                {
-                    Console.WriteLine("\nInvalid number, press enter to continue.. ");
-                }
+                person.PreferredNailLength = ReadFloatInput();
+                Console.WriteLine("\nNew length set...");
             }
             else
             {
@@ -154,44 +144,44 @@ namespace CleanNails
 
             Console.Write("\nDays to Simulate: ");
 
-            int numDays;
-            if (int.TryParse(Console.ReadLine(), out numDays))
+            int numDays = ReadIntInput();
+
+            for (int i = 1; i <= numDays; i++)
             {
-                for (int i = 1; i <= numDays; i++)
+                Console.ForegroundColor = ConsoleColor.Yellow;
+                Console.WriteLine("\nDay " + i);
+                Console.ForegroundColor = ConsoleColor.White;
+
+                foreach (var customer in nailSaloon.GetAllCustomers())
                 {
-                    Console.ForegroundColor = ConsoleColor.Yellow;
-                    Console.WriteLine("\nDay " + i);
-                    Console.ForegroundColor = ConsoleColor.White;
 
-                    foreach (var customer in nailSaloon.GetAllCustomers())
+                    foreach (var nail in customer.ToeNails)
                     {
-
-                        foreach (var nail in customer.ToeNails)
-                        {
-                            nail.Grow();
-                        }
-
-                        foreach (var nail in customer.FingerNails)
-                        {
-                            nail.Grow();
-                        }
-                        customer.Hair.Grow();
+                        nail.Grow();
                     }
 
-                    nailSaloon.CheckAndClipFingerNails();
-                    nailSaloon.CheckAndClipToeNails();
-                    nailSaloon.CheckAndClipHair();
+                    foreach (var nail in customer.FingerNails)
+                    {
+                        nail.Grow();
+                    }
+                    customer.Hair.Grow();
                 }
+
+                nailSaloon.CheckAndClipFingerNails();
+                nailSaloon.CheckAndClipToeNails();
+                nailSaloon.CheckAndClipHair();
             }
+
             Console.WriteLine("\nPress enter to return to menu");
             Console.ReadLine();
             Run();
         }
 
-        public int ReadInput() 
+        #region InputSection
+        public int ReadIntInput()
         {
             int result;
-            if (int.TryParse(Console.ReadLine(), out result)) 
+            if (int.TryParse(Console.ReadLine(), out result))
             {
                 return result;
             }
@@ -205,7 +195,22 @@ namespace CleanNails
             return result;
         }
 
-        public float ReadFloatInput() { return float.Parse(Console.ReadLine()); }
+        public float ReadFloatInput()
+        {
+            float result;
+            if (float.TryParse(Console.ReadLine(), out result))
+            {
+                return result;
+            }
+            else
+            {
+                Console.WriteLine("Invalid number");
+                Console.ReadLine();
+            }
+            Run();
+            return result;
+        }
+        #endregion
     }
 }
 
